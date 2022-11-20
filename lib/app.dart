@@ -21,6 +21,7 @@ Future run(EnvironmentConfigModel config) async {
   MaterialAppController.instance;
 
   await LocaleManager.cacheInit();
+  MaterialAppController.instance.initTheme(AppThemes().darkTheme, AppThemes().lightTheme);
 
   ///Initialize your HTTP base url and Web Socket Adress
   HttpUrl.baseUrl = config.apiBaseUrl;
@@ -36,7 +37,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MaterialAppController.instance.initTheme(AppThemes().darkTheme, AppThemes().lightTheme);
     return MaterialRxStreamBuilder(
         stream: MaterialAppController.instance.outModel,
         builder: (_, snapshot) {
