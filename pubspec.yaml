@@ -39,6 +39,7 @@ dependencies:
   http: ^0.13.5
   rxdart: ^0.27.7
   shared_preferences: ^2.0.15
+  flutter_localization: ^0.1.9
 
 dev_dependencies:
   flutter_test:
