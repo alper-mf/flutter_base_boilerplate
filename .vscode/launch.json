@@ -9,7 +9,7 @@
             "name": "base_project",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main.dart",
+            "program": "lib/main_dev.dart",
             //"flutterMode": "release",
             "args": [
                 "--flavor", //flavor name

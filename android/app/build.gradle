@@ -60,6 +60,25 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "environment"
+    productFlavors {
+        development {
+            dimension "environment"
+            applicationIdSuffix ".development"
+            versionNameSuffix " Dev"
+        }
+
+        staging {
+            dimension "environment"
+            applicationIdSuffix ".staging"
+            versionNameSuffix " staging"
+        }
+
+        product {
+            dimension "environment"
+        }
+    }
 }
 
 flutter {
