@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_project/app/main/values/constants/http_url.dart';
 
 import 'app/data/local_models/config/environment_config_model.dart';
+import 'app/main/routing/screen_manager.dart';
 import 'app/main/values/constants/app_constant.dart' as cons;
 
 /// Tüm proje ortamları bu run Fon. nunu çağırmakta
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         );
       },
       title: appName ?? cons.appName,
+      onGenerateRoute: Screens.instance.main.onGenerateRoute,
     );
   }
 }
