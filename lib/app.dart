@@ -1,15 +1,22 @@
 // ignore: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/app/main/theme/themes.dart';
 import 'package:flutter_base_project/app/main/values/constants/http_url.dart';
+import 'package:flutter_base_project/app/managers/material_controller/rx_stream_builder.dart';
 
 import 'app/data/local_models/config/environment_config_model.dart';
 import 'app/main/routing/screen_manager.dart';
 import 'app/main/values/constants/app_constant.dart' as cons;
+import 'app/managers/locale_manager/locale_manager.dart';
+import 'app/managers/material_controller/material_controller.dart';
 
 /// Tüm proje ortamları bu run Fon. nunu çağırmakta
 Future run(EnvironmentConfigModel config) async {
   WidgetsFlutterBinding.ensureInitialized();
+  MaterialAppController.instance;
+
+  await LocaleManager.cacheInit();
 
   ///Initialize your HTTP base url and Web Socket Adress
   HttpUrl.baseUrl = config.apiBaseUrl;
@@ -25,15 +32,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: (BuildContext context, Widget? child) {
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
-          child: child!,
-        );
-      },
-      title: appName ?? cons.appName,
-      onGenerateRoute: Screens.instance.main.onGenerateRoute,
-    );
+    MaterialAppController.instance.initTheme(AppThemes().darkTheme, AppThemes().lightTheme);
+    return MaterialRxStreamBuilder(
+        stream: MaterialAppController.instance.outModel,
+        builder: (_, snapshot) {
+          final model = snapshot.data;
+          return MaterialApp(
+            builder: (BuildContext context, Widget? child) {
+              return MediaQuery(
+                data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+                child: child!,
+              );
+            },
+            title: appName ?? cons.appName,
+            theme: model!.themeData,
+            onGenerateRoute: Screens.instance.main.onGenerateRoute,
+          );
+        });
   }
 }
