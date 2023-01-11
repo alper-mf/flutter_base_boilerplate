@@ -1,8 +1,10 @@
-# flutter_base_project
+# Flutter base project
 
-A new Flutter project.
 
 [ √ ] - Localization
+##
 [ √ ] - Change theme without state management
+##
 [ √ ] - Flavors
+##
 [   ] - CI/CD
