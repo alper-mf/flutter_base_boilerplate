@@ -10,7 +10,7 @@ class AppLocalization<T extends AppLocalizationLabel> {
   const AppLocalization(this.locale, this.labels);
 
   static AppLocalizationLabel get getLabels {
-    AppLocalization? localization = Localizations.of(Screens.context, AppLocalization);
+    AppLocalization? localization = Localizations.of(Screens.instance.context!, AppLocalization);
 
     localization ??= AppLocalization(kDefaultLocal, supportedLocalization[kDefaultLocal.languageCode]!);
 

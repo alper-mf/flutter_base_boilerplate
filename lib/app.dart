@@ -33,15 +33,20 @@ Future run(EnvironmentConfigModel config) async {
 
 class MyApp extends StatelessWidget {
   final String? appName;
+
   const MyApp({Key? key, this.appName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final appRouter = Screens.instance;
+
     return MaterialRxStreamBuilder(
         stream: MaterialAppController.instance.outModel,
         builder: (_, snapshot) {
           final model = snapshot.data;
-          return MaterialApp(
+          return MaterialApp.router(
+            routeInformationParser: appRouter.routeInformationParser,
+            routerDelegate: appRouter.routerDelegate,
             builder: (BuildContext context, Widget? child) {
               return MediaQuery(
                 data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
@@ -58,7 +63,6 @@ class MyApp extends StatelessWidget {
             ],
             title: appName ?? cons.appName,
             theme: model.themeData,
-            onGenerateRoute: Screens.instance.main.onGenerateRoute,
           );
         });
   }
