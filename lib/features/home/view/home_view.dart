@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/app/common/utils/size_config.dart';
 import 'package:flutter_base_project/app/main/routing/screen_manager.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,6 +10,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
@@ -20,7 +22,7 @@ class HomeView extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () => context.pushNamed(Screens.firstTestScreenPath,
-                  extra: TestModel(testName: 'Alperr', testId: '2').toJson()),
+                  extra: TestModel(testName: 'Alper', testId: '2').toJson()),
               child: const Text('Test Screen 1 '),
             ),
             ElevatedButton(
