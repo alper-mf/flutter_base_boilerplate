@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/app/common/utils/text_style.dart';
 
 class SecondTestScreen extends StatefulWidget {
   final String testId;
@@ -17,7 +18,20 @@ class _SecondTestScreenState extends State<SecondTestScreen> {
         title: const Text('Second Test Screen'),
       ),
       body: Center(
-        child: Text(widget.testId, style: const TextStyle(fontSize: 20)),
+        child: SizedBox(
+          height: 200,
+          width: 300,
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                  child: Text(
+                widget.testId,
+                style: s20W300Dark(),
+              )),
+            ),
+          ),
+        ),
       ),
     );
   }

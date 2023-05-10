@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/app/common/utils/size_config.dart';
 import 'package:flutter_base_project/features/home/home_screen.dart';
 import 'package:flutter_base_project/features/test/common/test_model.dart';
 import 'package:flutter_base_project/features/test/seconde_test_screen.dart';
@@ -8,12 +7,12 @@ import 'package:go_router/go_router.dart';
 import '../../../features/test/first_test_screen.dart';
 
 class Screens {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
-
   Screens._privateConstructor();
 
   static final Screens _instance = Screens._privateConstructor();
   static Screens get instance => _instance;
+
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
   /// Get the current context
   BuildContext? get context => navigatorKey.currentContext;
@@ -26,6 +25,8 @@ class Screens {
   //**Screen Routes */
   final _router = GoRouter(
       debugLogDiagnostics: true,
+      initialLocation: homeScreenPath,
+      navigatorKey: navigatorKey,
       routes: [
         GoRoute(
           name: homeScreenPath,

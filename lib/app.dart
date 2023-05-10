@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-import 'package:flutter_base_project/app/main/theme/themes.dart';
 import 'package:flutter_base_project/app/main/values/constants/http_url.dart';
 import 'package:flutter_base_project/app/managers/material_controller/rx_stream_builder.dart';
 
@@ -11,6 +9,7 @@ import 'app/data/local_models/config/environment_config_model.dart';
 import 'app/main/localizations/default_localization.dart';
 import 'app/main/localizations/i10n.dart';
 import 'app/main/routing/screen_manager.dart';
+import 'app/main/theme/color_schemes.g.dart';
 import 'app/main/values/constants/app_constant.dart' as cons;
 import 'app/managers/locale_manager/locale_manager.dart';
 import 'app/managers/material_controller/material_controller.dart';
@@ -21,7 +20,8 @@ Future run(EnvironmentConfigModel config) async {
   MaterialAppController.instance;
 
   await LocaleManager.cacheInit();
-  MaterialAppController.instance.initTheme(AppThemes().darkTheme, AppThemes().lightTheme);
+  MaterialAppController.instance.initTheme(ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      ThemeData(useMaterial3: true, colorScheme: lightColorScheme));
 
   ///Initialize your HTTP base url and Web Socket Adress
   HttpUrl.baseUrl = config.apiBaseUrl;
@@ -61,7 +61,9 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
               AppLocalization.delegate,
             ],
+            darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
             title: appName ?? cons.appName,
+            // theme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
             theme: model.themeData,
           );
         });
