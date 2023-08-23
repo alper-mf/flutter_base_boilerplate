@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/app/main/routing/app_route_constants.dart';
 import 'package:flutter_base_project/features/home/home_screen.dart';
 import 'package:flutter_base_project/features/test/common/test_model.dart';
 import 'package:flutter_base_project/features/test/seconde_test_screen.dart';
@@ -17,33 +18,32 @@ class Screens {
   /// Get the current context
   BuildContext? get context => navigatorKey.currentContext;
 
+  //*Navigator Keys */
+
   //**Screen Paths */
-  static const String homeScreenPath = '/';
-  static const String firstTestScreenPath = '/firstTestScreen';
-  static const String secondTestScreenPath = '/secondTestScreen';
 
   //**Screen Routes */
   final _router = GoRouter(
       debugLogDiagnostics: true,
-      initialLocation: homeScreenPath,
+      initialLocation: AppRoutes.home,
       navigatorKey: navigatorKey,
       routes: [
         GoRoute(
-          name: homeScreenPath,
-          path: homeScreenPath,
+          name: AppRoutes.home,
+          path: '/',
           builder: (context, state) => const HomeScreen(),
         ),
         GoRoute(
-          name: firstTestScreenPath,
-          path: firstTestScreenPath,
+          name: AppRoutes.firstTestScreen,
+          path: '/first_test_screen',
           builder: (context, state) {
-            final testModel = TestModel.fromJson(state.extra as Map<String, dynamic>);
+            final testModel = state.extra as TestModel;
             return FirstTestScreen(testModel: testModel);
           },
         ),
         GoRoute(
-          name: secondTestScreenPath,
-          path: '$secondTestScreenPath/:userId',
+          name: AppRoutes.secondTestScreen,
+          path: '/second_test_screen/:userId',
           builder: (context, state) {
             final userId = state.pathParameters['userId'];
             return SecondTestScreen(testId: userId!);

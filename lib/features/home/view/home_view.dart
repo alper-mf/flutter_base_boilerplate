@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_project/app/main/routing/app_route_constants.dart';
 import 'package:flutter_base_project/app/main/routing/screen_manager.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,12 +20,12 @@ class HomeView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
-              onPressed: () => context.pushNamed(Screens.firstTestScreenPath,
-                  extra: TestModel(testName: 'Alper', testId: '2').toJson()),
+              onPressed: () =>
+                  context.pushNamed(AppRoutes.firstTestScreen, extra: TestModel(testName: 'Alper', testId: '2')),
               child: const Text('Test Screen 1 '),
             ),
             ElevatedButton(
-              onPressed: () => context.pushNamed(Screens.secondTestScreenPath, pathParameters: {'userId': '999999'}),
+              onPressed: () => context.pushNamed(AppRoutes.secondTestScreen, pathParameters: {'userId': '999999'}),
               child: const Text('Test Screen 2'),
             ),
           ],

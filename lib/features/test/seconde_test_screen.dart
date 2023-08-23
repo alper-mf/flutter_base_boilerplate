@@ -25,10 +25,12 @@ class _SecondTestScreenState extends State<SecondTestScreen> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                  child: Text(
-                widget.testId,
-                style: s20W300Dark(),
-              )),
+                  child: Text(widget.testId,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ))),
             ),
           ),
         ),
