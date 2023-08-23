@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/app/main/routing/app_route_constants.dart';
-import 'package:flutter_base_project/app/main/routing/screen_manager.dart';
+import 'package:flutter_base_project/app/main/routing/module/auth_route.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../app/main/routing/module/test_route.dart';
 import '../../test/common/test_model.dart';
 
 class HomeView extends StatelessWidget {
@@ -20,12 +20,18 @@ class HomeView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
+              onPressed: () => context.pushNamed(AuthRoute.signUp),
+              child: const Text('Sign Up Screen'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
               onPressed: () =>
-                  context.pushNamed(AppRoutes.firstTestScreen, extra: TestModel(testName: 'Alper', testId: '2')),
+                  context.pushNamed(TestRoute.firstTestScreen, extra: TestModel(testName: 'Alper', testId: '2')),
               child: const Text('Test Screen 1 '),
             ),
+            const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () => context.pushNamed(AppRoutes.secondTestScreen, pathParameters: {'userId': '999999'}),
+              onPressed: () => context.pushNamed(TestRoute.secondTestScreen, pathParameters: {'userId': '999999'}),
               child: const Text('Test Screen 2'),
             ),
           ],

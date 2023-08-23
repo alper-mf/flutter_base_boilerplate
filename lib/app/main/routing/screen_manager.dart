@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/app/main/routing/app_route_constants.dart';
+import 'package:flutter_base_project/app/main/routing/module/auth_route.dart';
+import 'package:flutter_base_project/app/main/routing/module/test_route.dart';
 import 'package:flutter_base_project/features/home/home_screen.dart';
-import 'package:flutter_base_project/features/test/common/test_model.dart';
-import 'package:flutter_base_project/features/test/seconde_test_screen.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../features/test/first_test_screen.dart';
 
 class Screens {
   Screens._privateConstructor();
@@ -25,30 +22,20 @@ class Screens {
   //**Screen Routes */
   final _router = GoRouter(
       debugLogDiagnostics: true,
-      initialLocation: AppRoutes.home,
+      initialLocation: '/',
       navigatorKey: navigatorKey,
       routes: [
         GoRoute(
-          name: AppRoutes.home,
+          name: 'home',
           path: '/',
           builder: (context, state) => const HomeScreen(),
         ),
-        GoRoute(
-          name: AppRoutes.firstTestScreen,
-          path: '/first_test_screen',
-          builder: (context, state) {
-            final testModel = state.extra as TestModel;
-            return FirstTestScreen(testModel: testModel);
-          },
-        ),
-        GoRoute(
-          name: AppRoutes.secondTestScreen,
-          path: '/second_test_screen/:userId',
-          builder: (context, state) {
-            final userId = state.pathParameters['userId'];
-            return SecondTestScreen(testId: userId!);
-          },
-        ),
+
+        ///Auth Routes
+        AuthRoute.route,
+
+        ///Test Routes
+        ...TestRoute.route,
       ],
       errorPageBuilder: (context, state) => MaterialPage<void>(
             key: state.pageKey,
