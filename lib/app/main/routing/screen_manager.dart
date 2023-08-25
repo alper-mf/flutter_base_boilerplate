@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/app/main/routing/module/auth_route.dart';
-import 'package:flutter_base_project/app/main/routing/module/test_route.dart';
+import 'package:flutter_base_project/app/main/routing/module/auth/auth_manager.dart';
+import 'package:flutter_base_project/app/main/routing/module/auth/auth_route.dart';
+import 'package:flutter_base_project/app/main/routing/module/test/test_route.dart';
 import 'package:flutter_base_project/features/home/home_screen.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 class Screens {
@@ -12,14 +14,11 @@ class Screens {
 
   static final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
+  final authManager = AuthManager();
+
   /// Get the current context
   BuildContext? get context => navigatorKey.currentContext;
 
-  //*Navigator Keys */
-
-  //**Screen Paths */
-
-  //**Screen Routes */
   final _router = GoRouter(
       debugLogDiagnostics: true,
       initialLocation: '/',
@@ -41,6 +40,9 @@ class Screens {
             key: state.pageKey,
             child: const ErrorPage(),
           ),
+
+      ///Add authManager to refreshListenable to listen to auth changes
+      refreshListenable: GetIt.I<AuthManager>(),
       redirect: (context, state) {
         ///Authentication controller can be used here to redirect to login screen
       });

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_project/app/main/routing/module/auth_route.dart';
+import 'package:flutter_base_project/app/main/routing/module/auth/auth_route.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../app/main/routing/module/test_route.dart';
+import '../../../app/main/routing/module/test/test_route.dart';
 import '../../test/common/test_model.dart';
 
 class HomeView extends StatelessWidget {

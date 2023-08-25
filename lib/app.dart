@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_base_project/app/main/values/constants/http_url.dart';
 import 'package:flutter_base_project/app/managers/material_controller/rx_stream_builder.dart';
+import 'package:get_it/get_it.dart';
 
 import 'app/data/local_models/config/environment_config_model.dart';
 import 'app/main/localizations/default_localization.dart';
 import 'app/main/localizations/i10n.dart';
+import 'app/main/routing/module/auth/auth_manager.dart';
 import 'app/main/routing/screen_manager.dart';
 import 'app/main/theme/color_schemes.g.dart';
 import 'app/main/values/constants/app_constant.dart' as cons;
@@ -20,6 +22,9 @@ Future run(EnvironmentConfigModel config) async {
   MaterialAppController.instance;
 
   await LocaleManager.cacheInit();
+
+  /// Initialize your AuthManager
+  GetIt.I.registerSingleton<AuthManager>(AuthManager());
   MaterialAppController.instance.initTheme(ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
       ThemeData(useMaterial3: true, colorScheme: lightColorScheme));
 

@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
 
-import '../../../../features/test/common/test_model.dart';
-import '../../../../features/test/first_test_screen.dart';
-import '../../../../features/test/seconde_test_screen.dart';
+import '../../../../../features/test/common/test_model.dart';
+import '../../../../../features/test/first_test_screen.dart';
+import '../../../../../features/test/seconde_test_screen.dart';
 
 class TestRoute {
   TestRoute._();
