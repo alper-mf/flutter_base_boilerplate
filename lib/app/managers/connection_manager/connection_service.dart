@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 import 'connection_status_model.dart';
 
@@ -85,7 +84,7 @@ class ConnectionService {
     Stopwatch stopwatch = Stopwatch()..start();
 
     try {
-      final response = await http.get(Uri.parse(_serverPingURL));
+      final response = await HttpClient().getUrl(Uri.parse(_serverPingURL)).then((value) => value.close());
       if (response.statusCode == HttpStatus.ok) {
         stopwatch.stop();
         createConnectionModel(stopwatch.elapsedMilliseconds, false);

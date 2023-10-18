@@ -10,7 +10,7 @@ void main() {
       environment: AppEnvironment.Development,
       apiBaseUrl: 'your stag api url', // exp : 'api.test.com'
       socketUrl: 'your websocket adress', // exp: 'wss://socket.test.com/'
-      lokiUrl: '',
+      sentryUrl: '',
     ),
   );
 }

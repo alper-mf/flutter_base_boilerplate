@@ -4,7 +4,7 @@ import '../../../main/values/enums/general_enum.dart';
 /// Ortamlara ayırmak istediğimiz tüm ayarları bu nodelle yazıyoruz
 ///
 /// [environment] Ortam 'Environment'
-/// [lokiUrl] Loki log url
+/// [sentryUrl] Loki log url
 ///
 class EnvironmentConfigModel {
   EnvironmentConfigModel({
@@ -12,12 +12,12 @@ class EnvironmentConfigModel {
     required this.environment,
     required this.apiBaseUrl,
     required this.socketUrl,
-    required this.lokiUrl,
+    required this.sentryUrl,
   });
 
   final String? appName;
   final AppEnvironment environment;
   final String apiBaseUrl;
   final String socketUrl;
-  final String lokiUrl;
+  final String sentryUrl;
 }

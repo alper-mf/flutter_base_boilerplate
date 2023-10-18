@@ -1,5 +1,6 @@
-// ignore: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_base_project/app/main/values/constants/http_url.dart';
@@ -7,8 +8,9 @@ import 'package:flutter_base_project/app/managers/material_controller/rx_stream_
 import 'package:get_it/get_it.dart';
 
 import 'app/data/local_models/config/environment_config_model.dart';
-import 'app/main/localizations/default_localization.dart';
-import 'app/main/localizations/i10n.dart';
+
+import 'app/main/localizations/i10n/default_localization.dart';
+import 'app/main/localizations/i10n/i10n.dart';
 import 'app/main/routing/module/auth/auth_manager.dart';
 import 'app/main/routing/screen_manager.dart';
 import 'app/main/theme/color_schemes.g.dart';
@@ -43,21 +45,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appRouter = Screens.instance;
-
     return MaterialRxStreamBuilder(
         stream: MaterialAppController.instance.outModel,
         builder: (_, snapshot) {
           final model = snapshot.data;
           return MaterialApp.router(
-            routeInformationParser: appRouter.routeInformationParser,
-            routerDelegate: appRouter.routerDelegate,
+            scrollBehavior: MyCustomScrollBehavior(),
             builder: (BuildContext context, Widget? child) {
               return MediaQuery(
                 data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
                 child: child!,
               );
             },
+            routerConfig: Screens.instance.router,
             locale: model!.locale,
             supportedLocales: getSupportedLocalList,
             localizationsDelegates: [
@@ -73,4 +73,13 @@ class MyApp extends StatelessWidget {
           );
         });
   }
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }

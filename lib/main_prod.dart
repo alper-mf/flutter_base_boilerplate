@@ -15,7 +15,7 @@ void main() {
       environment: AppEnvironment.Development,
       apiBaseUrl: 'your prod api url', // exp : 'api.test.com'
       socketUrl: 'your websocket adress', // exp: 'wss://socket.test.com/'
-      lokiUrl: '',
+      sentryUrl: '',
     ),
   );
 }
