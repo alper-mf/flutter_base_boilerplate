@@ -1,0 +1,101 @@
+name: flutter_base_project
+description: A new Flutter project
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  # Caching for Dio requests
+  dio_cache_interceptor: ^3.4.4
+
+  # Firebase Core initialization
+  firebase_core: ^2.15.0
+
+  # Firebase Dynamic Links for deep linking
+  firebase_dynamic_links: ^5.3.4
+
+  # Firebase Cloud Messaging for push notifications
+  firebase_messaging: ^14.6.5
+
+  flutter:
+    sdk: flutter
+
+  # Local notifications in Flutter
+  flutter_local_notifications: ^14.1.0
+
+  flutter_localizations:
+    sdk: flutter
+
+  # SVG rendering for Flutter
+  flutter_svg: ^2.0.6
+
+  # State management and navigation
+  get: ^4.6.5
+  go_router: ^12.0.0
+
+  # Internationalization and localization
+  intl: any
+
+  # Persistent storage for app data
+  shared_preferences: ^2.1.1
+
+  # Logging and debugging
+  logger: ^2.0.2+1
+
+  # Overlay widgets for Flutter
+  overlay_kit: ^1.0.8
+
+  # Access to device information
+  package_info_plus: ^4.0.1
+
+  # Reactive programming library
+  rxdart: ^0.27.7
+
+  # URL launching
+  url_launcher: ^6.1.11
+
+  collection: any
+
+  # Caching images from the network
+  cached_network_image: ^3.2.3
+
+  # Access to device information
+  device_info_plus: ^9.0.1
+
+  # Custom Dio client for specific use
+  cp_dio_client:
+    git: https://github.com/alper-mf/cp_dio_service.git
+
+dev_dependencies:
+  # Dart code analysis and metrics
+  dart_code_metrics: ^5.5.1
+
+  # Linting rules for Flutter
+  flutter_lints: any
+
+  flutter_test:
+    sdk: flutter
+
+  integration_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+
+  fonts:
+    - family: GreycliffCF
+      fonts:
+        - asset: assets/fonts/GreycliffCF-Light.ttf
+          weight: 300
+        - asset: assets/fonts/GreycliffCF-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/GreycliffCF-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/GreycliffCF-DemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/GreycliffCF-Bold.ttf
+          weight: 700
